@@ -6,12 +6,18 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var result = Day1.DoorPassword();
+        var doorPassword = Day1.DoorPassword();
+        var doorPassword0x434C49434B = Day1.DoorPassword0x434C49434B();
 
-        Console.WriteLine("The password is: " + result);
+        Console.WriteLine("----------------------DAY1--------------------");
+        Console.WriteLine("The doorPassword is: " + doorPassword);
+        Console.WriteLine("The doorPassword0x434C49434B is: " + doorPassword0x434C49434B);
+        Console.WriteLine();
+
+        Console.WriteLine("----------------------DAY2--------------------");
+        Console.WriteLine();
 
         Console.ReadLine();
-
         return;
     }
 }
