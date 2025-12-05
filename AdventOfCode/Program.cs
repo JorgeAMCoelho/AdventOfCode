@@ -1,4 +1,6 @@
 ﻿using AdventOfCode.Day_1;
+using AdventOfCode.Day_2;
+using AdventOfCode.Day_3;
 
 namespace AdventOfCode;
 
@@ -15,6 +17,17 @@ internal class Program
         Console.WriteLine();
 
         Console.WriteLine("----------------------DAY2--------------------");
+        var invalidIdsSum = Day2.InvalidIds();
+        var invalidIdsSumPartTwo = Day2.InvalidIdsPartTwo();
+        Console.WriteLine("Invalid Ids sum: " + invalidIdsSum);
+        Console.WriteLine("Invalid Ids sum part two: " + invalidIdsSumPartTwo);
+        Console.WriteLine();
+
+        Console.WriteLine("----------------------DAY3--------------------");
+        var maximumJoltage = Day3.MaximumJoltage();
+        var maximumJoltage12Bateries = Day3.MaximumJoltage12Bateries();
+        Console.WriteLine("Sum of Maximum Joltage: " + maximumJoltage);
+        Console.WriteLine("Sum of Maximum Joltage 12 Bateries: " + maximumJoltage12Bateries);
         Console.WriteLine();
 
         Console.ReadLine();
