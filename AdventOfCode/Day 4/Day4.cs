@@ -1,8 +1,8 @@
-﻿namespace AdventOfCode.Day_3;
+﻿namespace AdventOfCode.Day_4;
 
 public static class Day4
 {
-    private readonly static string[] fileInput = Reader.ReadInputArrayStrings("Day3Input.txt");
+    private readonly static string[] fileInput = Reader.ReadInputArrayStrings("Day4Input.txt");
 
     private readonly static string[] localInput = ["987654321111111", "811111111111119", "234234234234278", "818181911112111"];
 
