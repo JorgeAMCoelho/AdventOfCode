@@ -57,11 +57,11 @@ public static class Day3
 
             joltage.Push(batery[0]);
 
-            for (var i = 1; i < batery.Length ; i++)
+            for (var i = 1; i < batery.Length; i++)
             {
                 while (joltage.Count > 0 && int.Parse(joltage.Peek().ToString() ?? "0") < int.Parse(batery[i].ToString()))
                 {
-                    if(joltage.Count + batery[i..].Length <= 12)
+                    if (joltage.Count + batery[i..].Length <= 12)
                     {
                         break;
                     }

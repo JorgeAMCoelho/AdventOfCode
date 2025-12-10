@@ -4,93 +4,81 @@ public static class Day4
 {
     private readonly static string[] fileInput = Reader.ReadInputArrayStrings("Day4Input.txt");
 
-    private readonly static string[] localInput = ["987654321111111", "811111111111119", "234234234234278", "818181911112111"];
+    private readonly static string[] localInput = ["..@@.@@@@.", "@@@.@.@.@@", "@@@@@.@.@@", "@.@@@@..@.", "@@.@@@@.@@", ".@@@@@@@.@", ".@.@.@.@@@", "@.@@@.@@@@", ".@@@@@@@@.", "@.@.@@@.@."];
 
     private readonly static string[] input = localInput;
 
-    public static int MaximumJoltage()
+    public static int AccessByForklift()
     {
         var retValue = 0;
 
-        foreach (var batery in input)
+        for (int i = 0; i < input.Length; i++)
         {
-            var maxLeft = batery[0];
-            var maxRight = batery[batery.Length - 1];
-
-            var skip = 0;
-
-            for (var i = 0; i < batery.Length - 1; i++)
+            for (int j = 0; j < input.Length; j++)
             {
-                if (batery[i] > maxLeft)
+                var hasAdjacent = 0;
+
+                if (input[i][j] == '@')
                 {
-                    maxLeft = batery[i];
-                    skip = i;
+                    if (j - 1 >= 0)
+                    {
+                        if (input[i][j - 1] == '@')
+                            ++hasAdjacent;
+                    }
+
+                    if (j + 1 < input.Length)
+                    {
+                        if (input[i][j + 1] == '@')
+                            ++hasAdjacent;
+                    }
+
+                    var tempCount = 0;
+                    var auxValue = j - 1;
+
+                    if (i - 1 >= 0)
+                    {
+                        while (tempCount < 3)
+                        {
+                            if (auxValue < 0 || auxValue > input.Length - 1)
+                            {
+                                tempCount++;
+                                continue;
+                            }
+
+                            if (input[i - 1][auxValue] == '@')
+                                ++hasAdjacent;
+                            auxValue++;
+                            tempCount++;
+                        }
+                    }
+
+                    tempCount = 0;
+                    auxValue = j - 1;
+
+                    if (i + 1 < input.Length)
+                    {
+                        while (tempCount < 3)
+                        {
+                            if (auxValue < 0 || auxValue > input.Length - 1)
+                            {
+                                tempCount++;
+                                auxValue++;
+                                continue;
+                            }
+
+                            if (input[i + 1][auxValue] == '@')
+                                ++hasAdjacent;
+                            auxValue++;
+                            tempCount++;
+                        }
+                    }
+
+                    if (hasAdjacent < 4)
+                    {
+                        retValue++;
+                    }
                 }
             }
-
-            for (var i = batery.Length - 1; i > skip; i--)
-            {
-                if (batery[i] > maxRight)
-                {
-                    maxRight = batery[i];
-                }
-            }
-
-            var total = int.Parse(string.Concat(maxLeft, maxRight));
-            retValue += total;
-        }
-
-        return retValue;
-    }
-
-    public static long MaximumJoltage12Bateries()
-    {
-        var retValue = 0l;
-
-        foreach (var batery in input)
-        {
-            var count = 0;
-
-            var joltage = "";
-
-            var referencePoint = batery[0];
-
-            var startingPoint = 0;
-
-            for (var i = 1; i < batery.Length - 1; i++)
-            {
-                startingPoint = i;
-
-                if (int.Parse(referencePoint.ToString()) > int.Parse(batery[i].ToString()))
-                {
-                    joltage = string.Concat(referencePoint);
-                    referencePoint = batery[i];
-                    break;
-                }
-
-                count++;
-            }
-
-            for (var i = startingPoint + 1; i < batery.Length - 2; i++)
-            {
-                if (int.Parse(referencePoint.ToString()) < int.Parse(batery[i].ToString()))
-                {
-                    joltage += string.Concat(batery[i]);
-                    referencePoint = batery[i];
-                    continue;
-                }
-
-                count++;
-
-                if (count > batery.Length - 12)
-                {
-                    joltage += string.Concat(batery[i..]);
-                    break;
-                }
-            }
-
-            var total = long.Parse(joltage);
-            retValue += total;
         }
 
         return retValue;

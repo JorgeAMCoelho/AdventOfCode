@@ -67,7 +67,7 @@ public static class Day2
                 {
                     if (j + length > value.Length)
                     {
-                        if(value.Substring(j).Length > 0)
+                        if (value.Substring(j).Length > 0)
                         {
                             toAdd = false;
                         }
