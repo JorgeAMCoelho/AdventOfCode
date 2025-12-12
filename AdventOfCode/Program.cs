@@ -1,5 +1,6 @@
 ﻿using AdventOfCode.Day_3;
 using AdventOfCode.Day_4;
+using AdventOfCode.Day_5;
 
 namespace AdventOfCode;
 
@@ -29,10 +30,18 @@ internal class Program
         //Console.WriteLine("Sum of Maximum Joltage 12 bateries: " + maximumJoltage12Bateries);
         //Console.WriteLine();
 
-        Console.WriteLine("----------------------DAY4--------------------");
-        var accessByForklift = Day4.AccessByForklift();
-        Console.WriteLine("Number of rolls accessed by forklift: " + accessByForklift);
-        //Console.WriteLine("Sum of Maximum Joltage 12 bateries: " + maximumJoltage12Bateries);
+        //Console.WriteLine("----------------------DAY4--------------------");
+        //var accessByForklift = Day4.AccessByForklift();
+        //var removeByForklift = Day4.RemoveByForklift();
+        //Console.WriteLine("Number of rolls accessed by forklift: " + accessByForklift);
+        //Console.WriteLine("Number of rolls removed by forklift: " + removeByForklift);
+        //Console.WriteLine();
+
+        Console.WriteLine("----------------------DAY5--------------------");
+        var availableProducts = Day5.AvailableProducts();
+        var listAvailableProducts = Day5.ListAvailableProducts();
+        Console.WriteLine("Number of available products: " + availableProducts);
+        Console.WriteLine("Number of list available products: " + listAvailableProducts);
         Console.WriteLine();
 
         Console.ReadLine();
