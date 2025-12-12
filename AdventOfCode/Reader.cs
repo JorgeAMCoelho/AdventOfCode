@@ -8,6 +8,8 @@ public class Reader
 
         var anotherInputPath = $"C:\\Users\\jorge\\source\\repos\\AdventOfCodeInputs\\{fileName}";
 
+        var theLastInputPath = $"D:\\Advent of code 2025 - Inputs\\{fileName}";
+
         string[] file;
 
         try
@@ -16,7 +18,14 @@ public class Reader
         }
         catch (Exception e)
         {
-            file = File.ReadAllLines(anotherInputPath);
+            try
+            {
+                file = File.ReadAllLines(anotherInputPath);
+            }
+            catch (Exception ex)
+            {
+                file = File.ReadAllLines(theLastInputPath);
+            }
         }
 
         return file;
