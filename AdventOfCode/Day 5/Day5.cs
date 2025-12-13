@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode.Day_5;
+﻿using System.Numerics;
+
+namespace AdventOfCode.Day_5;
 
 public static class Day5
 {
@@ -7,7 +9,7 @@ public static class Day5
     private readonly static string[] localInput = ["3-5", "1-4", "10-14", "16-20", "12-18", "", "1", "5", "8", "11", "17", "32"];
 
     private readonly static string[] input = localInput;
-    
+
     public static long AvailableProducts()
     {
         var retValue = 0l;
@@ -47,6 +49,8 @@ public static class Day5
 
         var ingredientRanges = new List<string>();
 
+        
+
         while (!string.IsNullOrWhiteSpace(input[count]))
         {
             ingredientRanges.Add(input[count]);
@@ -61,7 +65,7 @@ public static class Day5
         for (var i = 1; i < ingredientRanges.Count; i++)
         {
             var separated = ingredientRanges[i].Split('-');
-            
+
             minValueToCkeck = long.Parse(separated[0]);
             maxValueToCheck = long.Parse(separated[1]);
 
