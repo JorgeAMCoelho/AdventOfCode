@@ -1,4 +1,6 @@
-﻿using AdventOfCode.Day_3;
+﻿using AdventOfCode.Day_1;
+using AdventOfCode.Day_2;
+using AdventOfCode.Day_3;
 using AdventOfCode.Day_4;
 using AdventOfCode.Day_5;
 
@@ -37,12 +39,12 @@ internal class Program
         //Console.WriteLine("Number of rolls removed by forklift: " + removeByForklift);
         //Console.WriteLine();
 
-        Console.WriteLine("----------------------DAY5--------------------");
-        var availableProducts = Day5.AvailableProducts();
-        var listAvailableProducts = Day5.ListAvailableProducts();
-        Console.WriteLine("Number of available products: " + availableProducts);
-        Console.WriteLine("Number of list available products: " + listAvailableProducts);
-        Console.WriteLine();
+        //Console.WriteLine("----------------------DAY5--------------------");
+        //var availableProducts = Day5.AvailableProducts();
+        //var listAvailableProducts = Day5.ListAvailableProducts();
+        //Console.WriteLine("Number of available products: " + availableProducts);
+        //Console.WriteLine("Number of list available products: " + listAvailableProducts);
+        //Console.WriteLine();
 
         Console.ReadLine();
         return;
