@@ -2,10 +2,9 @@
 
 public static class Day5
 {
-    private readonly static string[] fileInput = Reader.ReadInputArrayStrings("Day5InputDup.txt");
+    private readonly static string[] fileInput = Reader.ReadInputArrayStrings("Day5Input.txt");
 
     private readonly static string[] localInput = ["3-5", "10-14", "16-20", "12-18",  "", "1", "5", "8", "11", "17", "32"];
-    //private readonly static string[] localInput = ["3-9", "10-14", "16-20", "12-18", "14-22", "10-24", "25-30", "25-30", "", "1", "5", "8", "11", "17", "32"];
 
     private readonly static string[] input = fileInput;
 
