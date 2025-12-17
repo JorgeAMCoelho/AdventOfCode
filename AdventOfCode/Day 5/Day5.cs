@@ -1,14 +1,13 @@
-﻿using System.Numerics;
-
-namespace AdventOfCode.Day_5;
+﻿namespace AdventOfCode.Day_5;
 
 public static class Day5
 {
-    private readonly static string[] fileInput = Reader.ReadInputArrayStrings("Day5Input.txt");
+    private readonly static string[] fileInput = Reader.ReadInputArrayStrings("Day5InputDup.txt");
 
-    private readonly static string[] localInput = ["3-5", "1-4", "10-14", "16-20", "12-18", "", "1", "5", "8", "11", "17", "32"];
+    private readonly static string[] localInput = ["3-5", "10-14", "16-20", "12-18",  "", "1", "5", "8", "11", "17", "32"];
+    //private readonly static string[] localInput = ["3-9", "10-14", "16-20", "12-18", "14-22", "10-24", "25-30", "25-30", "", "1", "5", "8", "11", "17", "32"];
 
-    private readonly static string[] input = localInput;
+    private readonly static string[] input = fileInput;
 
     public static long AvailableProducts()
     {
@@ -41,6 +40,7 @@ public static class Day5
         return retValue;
     }
 
+    //resposta 365804144481581 - tem bug
     public static long ListAvailableProducts()
     {
         var retValue = 0L;
@@ -48,8 +48,6 @@ public static class Day5
         var count = 0L;
 
         var ingredientRanges = new List<string>();
-
-        
 
         while (!string.IsNullOrWhiteSpace(input[count]))
         {
@@ -62,12 +60,16 @@ public static class Day5
 
         var countList = ingredientRanges.GetRange(0, 1).ToList();
 
-        for (var i = 1; i < ingredientRanges.Count; i++)
+        ingredientRanges.RemoveAt(0);
+
+        for (var i = 0 ; i < ingredientRanges.Count;)
         {
             var separated = ingredientRanges[i].Split('-');
 
             minValueToCkeck = long.Parse(separated[0]);
             maxValueToCheck = long.Parse(separated[1]);
+
+            var toAdd = true;
 
             for (var j = 0; j < countList.Count; j++)
             {
@@ -76,34 +78,39 @@ public static class Day5
                 var minValueList = long.Parse(separatedList[0]);
                 var maxValueList = long.Parse(separatedList[1]);
 
+                toAdd = true;
+
                 if (minValueToCkeck >= minValueList && maxValueToCheck <= maxValueList)
                 {
+                    toAdd = false;
                     break;
                 }
 
-                if (minValueToCkeck >= minValueList && minValueToCkeck <= maxValueList
-                    && maxValueToCheck > maxValueList)
+                if (minValueToCkeck >= minValueList && minValueToCkeck <= maxValueList)
                 {
                     countList[j] = $"{minValueList}-{maxValueToCheck}";
+                    ingredientRanges.AddRange(countList.Skip(j + 1).ToList());
                     countList = countList.Take(j + 1).ToList();
-
-                    i = 0;
+                    toAdd = false;
                     break;
                 }
 
-                if(maxValueToCheck <= maxValueList && maxValueToCheck >= minValueList
-                    && minValueToCkeck < minValueList)
+                if (maxValueToCheck <= maxValueList && maxValueToCheck >= minValueList)
                 {
                     countList[j] = $"{minValueToCkeck}-{maxValueList}";
+                    ingredientRanges.AddRange(countList.Skip(j + 1).ToList());
                     countList = countList.Take(j + 1).ToList();
-
-                    i = 0;
+                    toAdd = false;
                     break;
                 }
-
             }
 
-            countList.Add(ingredientRanges[i]);
+            if (toAdd)
+            {
+                countList.Add(ingredientRanges[i]);
+            }
+
+            ingredientRanges.RemoveAt(i);
         }
 
         foreach (var countL in countList)
